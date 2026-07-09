@@ -1,121 +1,57 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // We will eventually move this to a real state management solution or database
+  const [jobs, setJobs] = useState([
+    { id: 1, company: 'Google', role: 'Frontend Engineer', status: 'Applied', date: '2026-07-01' },
+    { id: 2, company: 'Amazon', role: 'React Developer', status: 'Interviewing', date: '2026-06-28' },
+  ])
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      {/* Navigation Header */}
+      <header className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-gray-900">🚀 AppliTrack</h1>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
+            + New Application
+          </button>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      {/* Main Dashboard Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        {/* Stats Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 border-t-4 border-t-blue-500">
+            <h2 className="text-sm font-medium text-gray-500 uppercase">Total Applied</h2>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{jobs.length}</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 border-t-4 border-t-yellow-500">
+            <h2 className="text-sm font-medium text-gray-500 uppercase">Interviewing</h2>
+            <p className="text-3xl font-bold text-gray-900 mt-2">1</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 border-t-4 border-t-green-500">
+            <h2 className="text-sm font-medium text-gray-500 uppercase">Offers</h2>
+            <p className="text-3xl font-bold text-gray-900 mt-2">0</p>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        {/* Applications Table Area */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+            <h3 className="text-lg font-semibold text-gray-800">Recent Applications</h3>
+          </div>
+          <div className="p-6">
+            <p className="text-gray-500 text-sm">
+              (This is where our interactive data table will go!)
+            </p>
+          </div>
+        </div>
+
+      </main>
+    </div>
   )
 }
 
